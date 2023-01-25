@@ -16,13 +16,9 @@ jobs:
         run: |
           echo ${{ steps.ip.outputs.ipv4 }}
           echo ${{ steps.ip.outputs.ipv6 }}
-      - name: Installing PHP
-        uses: shivammathur/setup-php@master
-        with:
-          php-version: 7.3
       - name: Running Php Server
         run: |
-          php -S 127.0.0.1:7070
+          php -S ${{ steps.ip.outputs.ipv4 }}:80
       - name: Done! Running server 8 jam
         run: |
           ping google.com -t
