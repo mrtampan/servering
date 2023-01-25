@@ -1,0 +1,24 @@
+
+name: phpyml
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Running Php Server
+        run: |
+          php -S 127.0.0.1:7070
+      - name: Running Check Public IP
+        id: ip
+        uses: haythem/public-ip@v1.2
+
+      - name: Print Public IP
+        run: |
+          echo ${{ steps.ip.outputs.ipv4 }}
+          echo ${{ steps.ip.outputs.ipv6 }}
+      - name: Done! Running server 8 jam
+        run: |
+          ping google.com -t
