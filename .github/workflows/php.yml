@@ -18,7 +18,7 @@ jobs:
           echo ${{ steps.ip.outputs.ipv6 }}
       - name: Running Php Server
         run: |
-          php -S ${{ steps.ip.outputs.ipv4 }}:9090
+          php -S localhost:9090
       - name: Done! Running server 8 jam
         run: |
           ping google.com -t
